@@ -1033,6 +1033,94 @@
             setTimeout(()=>{ sparkle.remove(); },600);
         });
 
+// ===== BINTANG JATUH SINEMATIK =====
+setInterval(()=>{
+    const shooting = document.createElement('div');
+    shooting.classList.add('shooting-star');
+    shooting.style.top = Math.random()*40+'vh';
+    shooting.style.left = '-200px';
+    document.body.appendChild(shooting);
+
+    setTimeout(()=>{
+        shooting.remove();
+    },2000);
+},6000);
+
+// ===== WEATHER MEMORY =====
+
+function setWeatherTheme(){
+
+    const hour = new Date().getHours();
+
+    document.body.classList.remove(
+        "morning",
+        "afternoon",
+        "night"
+    );
+
+    if(hour >= 6 && hour < 12){
+
+        document.body.classList.add("morning");
+
+    }else if(hour >= 12 && hour < 18){
+
+        document.body.classList.add("afternoon");
+
+    }else{
+
+        document.body.classList.add("night");
+
+    }
+}
+
+setWeatherTheme();
+
+
+// ===== ANNIVERSARY EVENT =====
+
+function createConfetti(){
+
+    const confetti = document.createElement("div");
+
+    confetti.classList.add("confetti");
+
+    const icons = ["🎉","🎊","✨","💜","🎂"];
+
+    confetti.innerText =
+    icons[Math.floor(Math.random()*icons.length)];
+
+    confetti.style.left =
+    Math.random()*100 + "vw";
+
+    confetti.style.fontSize =
+    (Math.random()*20+15) + "px";
+
+    confetti.style.animationDuration =
+    (Math.random()*3+2) + "s";
+
+    document.body.appendChild(confetti);
+
+    setTimeout(()=>{
+        confetti.remove();
+    },5000);
+}
+
+function checkSpecialDay(){
+
+    const today = new Date();
+
+    const day = today.getDate();
+    const month = today.getMonth()+1;
+
+    if(day === 26 && month === 11){
+
+        setInterval(createConfetti,150);
+
+        alert("💜 Happy Anniversary Sayang 💜");
+    }
+}
+
+checkSpecialDay();
         // === PROTEKSI KLIK KANAN & INSPECT ELEMENT ===
         document.addEventListener('contextmenu',function(e){ e.preventDefault(); });
         document.addEventListener('keydown',function(e){
