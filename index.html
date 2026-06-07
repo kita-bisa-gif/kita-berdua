@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shape Of My Heart - Cinematic Ultra</title>
+    <title>Perjalanan kita berdua - Bucin abiesz ni bosszz</title>
 
     <style>
 /* ===== AUTO PHOTO SLIDER ===== */
@@ -93,30 +93,31 @@
             text-align:center;
             position:relative;
             -webkit-touch-callout:none;
-            /* Tambahkan transisi halus untuk parallax */
             transition: transform 0.1s ease-out;
         }
 
         button,
         div,
         img,
-        a{
+        a,
+        input{
             outline:none;
         }
 
         button:focus,
         div:focus,
         img:focus,
-        a:focus{
+        a:focus,
+        input:focus{
             outline:none;
             box-shadow:none;
         }
 
-        /* ===== FITUR 2: PARALLAX BACKGROUND (AURORA) ===== */
+        /* ===== FITUR PARALLAX BACKGROUND (AURORA) ===== */
         .aurora-bg{
             content:'';
             position:fixed;
-            inset:-50px; /* Lebarkan sedikit agar tidak terlihat terpotong saat parallax */
+            inset:-50px;
             background:
             radial-gradient(circle at 20% 20%, rgba(180,120,255,.15), transparent 30%),
             radial-gradient(circle at 80% 30%, rgba(255,100,200,.12), transparent 30%),
@@ -127,40 +128,31 @@
         }
 
         @keyframes auroraMove{
-            0%{
-                transform:scale(1) translateY(0px);
-            }
-            100%{
-                transform:scale(1.2) translateY(-20px);
-            }
+            0%{ transform:scale(1) translateY(0px); }
+            100%{ transform:scale(1.2) translateY(-20px); }
         }
 
         .stars{
             position:fixed;
-            inset:-50px; /* Lebarkan sedikit agar tidak terlihat terpotong saat parallax */
+            inset:-50px;
             overflow:hidden;
             z-index:-1;
             pointer-events:none;
         }
 
-        .star{
-            position:absolute;
-            width:2px;
-            height:2px;
-            background:white;
-            border-radius:50%;
-            animation:twinkle 3s infinite ease-in-out;
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+            pointer-events: none;
         }
 
-        @keyframes twinkle{
-            0%,100%{
-                opacity:.2;
-                transform:scale(1);
-            }
-            50%{
-                opacity:1;
-                transform:scale(1.8);
-            }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
 
         .gift-container{
@@ -193,15 +185,9 @@
         }
 
         @keyframes bounce{
-            0%,20%,50%,80%,100%{
-                transform:translateY(0);
-            }
-            40%{
-                transform:translateY(-20px);
-            }
-            60%{
-                transform:translateY(-10px);
-            }
+            0%,20%,50%,80%,100%{ transform:translateY(0); }
+            40%{ transform:translateY(-20px); }
+            60%{ transform:translateY(-10px); }
         }
 
         .main-content{
@@ -322,10 +308,22 @@
             top: 0;
             bottom: 0;
             width: 4px;
-            background: linear-gradient(to bottom, rgba(192,132,255,0.1), #c084ff, rgba(192,132,255,0.1));
+            background: rgba(192,132,255,0.1);
             transform: translateX(-50%);
-            box-shadow: 0 0 15px #c084ff;
             z-index: 1;
+        }
+
+        .timeline-progress-fill {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #c084ff, #ffd6ff);
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px #ffd6ff;
+            z-index: 2;
+            height: 0%;
+            transition: height 0.1s linear;
         }
 
         .timeline-item {
@@ -376,10 +374,6 @@
             transition: 0.4s;
         }
 
-        .timeline-item:nth-child(even) .timeline-content {
-            text-align: left;
-        }
-
         .timeline-content:hover {
             transform: scale(1.03);
             border-color: rgba(192, 132, 255, 0.6);
@@ -415,10 +409,10 @@
             transform: translateY(0);
         }
 
-        /* ===== FITUR 3: DYNAMIC FLOATING POP-UP QUOTES ===== */
+        /* ===== FITUR: DYNAMIC FLOATING POP-UP QUOTES ===== */
         .quote-bubble {
             position: fixed;
-            bottom: -100px; /* Sembunyikan di bawah layar */
+            bottom: -100px;
             right: 20px;
             background: rgba(192, 132, 255, 0.15);
             border: 1px solid rgba(192, 132, 255, 0.4);
@@ -442,7 +436,7 @@
         }
 
         .quote-bubble.show-quote {
-            bottom: 80px; /* Munculkan di atas widget musik */
+            bottom: 80px;
             opacity: 1;
             display: block;
         }
@@ -464,30 +458,29 @@
             }
         }
 
-        .firefly{
-            position:fixed;
-            width:6px;
-            height:6px;
-            border-radius:50%;
-            background:#fff5aa;
-            box-shadow:0 0 10px #fff5aa;
-            pointer-events:none;
-            z-index:999;
-            animation:floatFly linear forwards;
+        .firefly {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(242, 255, 60, 0.9);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(242, 255, 60, 1), 0 0 20px rgba(242, 255, 60, 0.5);
+            animation: floatUp linear forwards;
+            pointer-events: none;
+            z-index: 999;
         }
 
-        @keyframes floatFly{
-            to{
-                transform:
-                translateY(-120vh)
-                translateX(100px);
-                opacity:0;
-            }
+        @keyframes floatUp {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            50% { transform: translateY(-50vh) translateX(30px); }
+            90% { opacity: 1; }
+            100% { transform: translateY(-105vh) translateX(-20px); opacity: 0; }
         }
 
         .shooting-star{
             position:fixed;
-            top:-100px;
+            top:-10px;
             left:-100px;
             width:150px;
             height:2px;
@@ -532,35 +525,26 @@
             align-items:flex-end;
             gap:4px;
             z-index:1000;
+            height: 40px;
         }
 
         .bar{
             width:5px;
-            height:20px;
+            height:10px;
             background:#c084ff;
             border-radius:20px;
-            animation:musicBounce 1s infinite ease-in-out;
-        }
-
-        .bar:nth-child(2){ animation-delay:.2s; }
-        .bar:nth-child(3){ animation-delay:.4s; }
-        .bar:nth-child(4){ animation-delay:.6s; }
-        .bar:nth-child(5){ animation-delay:.8s; }
-
-        @keyframes musicBounce{
-            0%,100%{ height:10px; }
-            50%{ height:40px; }
+            transition: height 0.08s ease;
+            box-shadow: 0 0 10px #c084ff;
         }
 
         @media(max-width:600px){
-            header h1{
-                font-size:2.1rem;
-            }
+            header h1{ font-size:2.1rem; }
             .counter-container { gap: 8px; }
             .counter-box { min-width: 65px; padding: 8px 5px; }
             .counter-number { font-size: 1.4rem; }
             
             .timeline-section::before { left: 20px; }
+            .timeline-progress-fill { left: 20px; }
             .timeline-item { justify-content: flex-end !important; }
             .timeline-content { width: calc(100% - 40px); }
             .timeline-dot { left: 20px; }
@@ -597,6 +581,209 @@
             from{ opacity:0; transform:translateY(50px); }
             to{ opacity:1; transform:translateY(0); }
         }
+
+        /* ===== KOTAK PESAN RAHASIA INTERAKTIF (CONTAINER UTAMA) ===== */
+        .interactive-memory-box {
+            background: linear-gradient(135deg, rgba(44, 20, 61, 0.6), rgba(20, 11, 34, 0.8));
+            border: 2px dashed rgba(192, 132, 255, 0.5);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 50px auto;
+            max-width: 550px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        .memory-btn {
+            background: linear-gradient(45deg, #c084ff, #ffd6ff);
+            color: #120b1a;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(192, 132, 255, 0.5);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: pulseHeart 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseHeart {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(192, 132, 255, 0.5); }
+            50% { transform: scale(1.04); box-shadow: 0 0 25px rgba(255, 214, 255, 0.8); }
+        }
+
+        .memory-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .display-message-area {
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        #dynamicLoveMessage {
+            font-size: 1.05rem;
+            color: #ffd6ff;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* ==================== STYLE 3 FITUR BARU BARU ==================== */
+        .sub-feature-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(192, 132, 255, 0.2);
+            border-radius: 18px;
+            padding: 20px;
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        .sub-feature-card h3 {
+            color: #ffd6ff;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Fitur Baru 1: Kontrol Musik Intern */
+        .music-dash-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .play-dash-btn {
+            background: #c084ff;
+            border: none;
+            color: #120b1a;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        .music-slider-track {
+            flex-grow: 1;
+            height: 5px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            position: relative;
+        }
+        .music-slider-fill {
+            height: 100%;
+            width: 0%;
+            background: #ffd6ff;
+            border-radius: 5px;
+            box-shadow: 0 0 8px #ffd6ff;
+        }
+        .music-time-lbl {
+            font-size: 0.75rem;
+            color: #ccc;
+            min-width: 35px;
+            text-align: right;
+        }
+        .volume-box {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+        .volume-range {
+            width: 70px;
+            accent-color: #c084ff;
+            cursor: pointer;
+        }
+
+        /* Fitur Baru 2: Kalkulator Cinta */
+        .love-calc-inputs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .love-calc-inputs input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(192, 132, 255, 0.4);
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: white;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+        .calc-action-btn {
+            background: rgba(192,132,255,0.2);
+            border: 1px solid #c084ff;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: bold;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .calc-action-btn:hover { background: #c084ff; color: #120b1a; }
+        #loveCalcResult {
+            font-size: 0.95rem;
+            color: #ffd6ff;
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+            min-height: 20px;
+        }
+
+        /* Fitur Baru 3: Generator Misi */
+        .mission-btn {
+            background: transparent;
+            border: 1px dashed #ffd6ff;
+            color: #ffd6ff;
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        .mission-btn:hover { background: rgba(255,214,255,0.1); }
+        #coupleMissionText {
+            font-size: 0.9rem;
+            color: #e7dfff;
+            margin-top: 10px;
+            font-style: italic;
+            border-left: 3px solid #c084ff;
+            padding-left: 10px;
+        }
+
+        /* EFEK TAP KLIK KURSOR PARTIKEL */
+        .click-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            font-size: 16px;
+            animation: explode 0.8s forwards cubic-bezier(0.1, 0.8, 0.3, 1);
+        }
+
+        @keyframes explode {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(var(--mx), var(--my)) scale(0); opacity: 0; }
+        }
     </style>
 </head>
 
@@ -609,14 +796,16 @@
         <p id="quoteText">Kamu tahu? Aku senyum-senyum sendiri pas nulis ini...</p>
     </div>
 
- <audio
-    id="shape-of-my-heart"
-    autoplay
-    loop
-    playsinline
-    preload="auto">
-    <source src="https://kita-bisa-gif.github.io/kita-berdua/music.mp3" type="audio/mpeg">
-</audio>
+    <audio
+        id="shape-of-my-heart"
+        autoplay
+        loop
+        playsinline
+        preload="auto"
+        crossorigin="anonymous">
+        <source src="https://kita-bisa-gif.github.io/kita-berdua/music.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="gift-container" id="giftScreen">
         <div class="gift-box" onclick="openGift()">🎁</div>
         <p class="click-text">TAP TO OPEN</p>
@@ -667,11 +856,11 @@
             <p style="margin-bottom: 10px;">🌸 Your Presence — kehadiranmu yang berharga di setiap hariku.</p>
         </div>
 
-
         <h2 style="color: #ffd6ff; margin: 50px 0 10px 0; font-size: 2rem; text-shadow: 0 0 15px rgba(192,132,255,0.4);">Foto Foto kita 📸</h2>
         <p style="color: #ccc; font-style: italic; margin-bottom: 30px;">" memori indah kita berdua anjayszz ..."</p>
 
         <div class="timeline-section">
+            <div class="timeline-progress-fill" id="timelineProgress"></div>
             
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -712,57 +901,38 @@
                     <img class="timeline-img" src="https://iili.io/CJ1qJgn.png" alt="Kenangan 4">
                 </div>
             </div>
-
-        </div>
-<div class="gallery-section">
-
-    <h2 class="gallery-title">
-        Kegiatan kita di BLOk M 💜
-    </h2>
-
-    <div class="slider">
-
-        <div class="slide-track">
-
-            <div class="slide"><img src="Screenshot 2026-05-31 183651.png"></div>
-            <div class="slide"><img src="Screenshot 2026-05-31 183635.png"></div>
-            <div class="slide"><img src="Screenshot 2026-05-31 183458.png"></div>
-            <div class="slide"><img src="Screenshot 2026-05-31 183626.png"></div>
-            <div class="slide"><img src="Screenshot 2026-05-31 183618.png"></div>
-            <div class="slide"><img src="Screenshot 2026-05-31 183545.png"></div>
-            <div class="slide"><img src="Screenshot 2026-05-31 183618.png"></div>
-            <div class="slide"><img src="Screenshot 2026-05-31 183553.png"></div>
-            <div class="slide"><img src="Screenshot 2026-05-31 183508.png"></div>
-            <div class="slide"><img src="Screenshot 2026-05-31 183442.png"></div>
         </div>
 
-    </div>
+        <div class="gallery-section">
+            <h2 class="gallery-title">Kegiatan kita di BLOk M 💜</h2>
+            <div class="slider">
+                <div class="slide-track">
+                    <div class="slide"><img src="Screenshot 2026-05-31 183651.png"></div>
+                    <div class="slide"><img src="Screenshot 2026-05-31 183635.png"></div>
+                    <div class="slide"><img src="Screenshot 2026-05-31 183458.png"></div>
+                    <div class="slide"><img src="Screenshot 2026-05-31 183626.png"></div>
+                    <div class="slide"><img src="Screenshot 2026-05-31 183618.png"></div>
 
-</div>
-<div class="section-card">
+                    <div class="slide"><img src="Screenshot 2026-05-31 183651.png"></div>
+                    <div class="slide"><img src="Screenshot 2026-05-31 183635.png"></div>
+                    <div class="slide"><img src="Screenshot 2026-05-31 183458.png"></div>
+                    <div class="slide"><img src="Screenshot 2026-05-31 183626.png"></div>
+                    <div class="slide"><img src="Screenshot 2026-05-31 183618.png"></div>
+                </div>
+            </div>
+        </div>
 
-    <h2>Ini vidio kita lagi makan  </h2>
+        <div class="section-card">
+            <h2>Ini vidio kita lagi makan  </h2>
+            <p style="margin-bottom:15px;">
+                Enak banget tapi kalo dimakan banyak banyak enegg juga ya 
+            </p>
+            <video controls playsinline preload="metadata" style="width:100%; border-radius:20px; box-shadow:0 0 25px rgba(192,132,255,.25);">
+                <source src="WhatsApp Video 2026-05-31 at 18.54.09.mp4" type="video/mp4">
+                Browser kamu tidak mendukung video.
+            </video>
+        </div>
 
-    <p style="margin-bottom:15px;">
-        Enak banget tapi kalo dimakan banyak banyak enegg juga ya 
-    </p>
-
-   <video
-    controls
-    playsinline
-    preload="metadata"
-         style="
-            width:100%;
-            border-radius:20px;
-            box-shadow:0 0 25px rgba(192,132,255,.25);
-        ">
-
-        <source src="WhatsApp Video 2026-05-31 at 18.54.09.mp4" type="video/mp4">
-
-        Browser kamu tidak mendukung video.
-    </video>
-
-</div>
         <div class="section-card long-story" style="margin: 60px auto 35px auto;">
             <h2>A Little Story About You 💌</h2>
             <div class="story-text">
@@ -787,17 +957,84 @@
             </div>
         </div>
 
+        <div class="interactive-memory-box">
+            <h2 style="color: #ffd6ff; font-size: 1.4rem; margin-bottom: 10px;">✨ Interactive Love Memory Box ✨</h2>
+            <p style="color: #ccc; font-size: 0.85rem; margin-bottom: 20px; font-style: italic;">"Klik tombol di bawah ini untuk melihat pesan kecil rahasia dari aku..."</p>
+            
+            <button class="memory-btn" onclick="generateRandomLoveMessage()">✨ Buka Pesan Random ✨</button>
+            
+            <div class="display-message-area">
+                <p id="dynamicLoveMessage">Klik tombol di atas untuk memunculkan kejutan kata manis... ❤️</p>
+            </div>
+
+            <div class="sub-feature-card">
+                <h3>🎵 Music Control & Playlist</h3>
+                <p style="font-size: 0.8rem; color: #bbb; margin-bottom: 8px;">Atur pemutaran lagu latar belakang langsung dari sini:</p>
+                <div class="music-dash-controls">
+                    <button class="play-dash-btn" id="dashPlayBtn" onclick="toggleDashMusic()">⏸️</button>
+                    <div class="music-slider-track" onclick="seekDashMusic(event)" id="dashTrackBar">
+                        <div class="music-slider-fill" id="dashTrackFill"></div>
+                    </div>
+                    <span class="music-time-lbl" id="dashTimeLbl">0:00</span>
+                </div>
+                <div class="volume-box">
+                    <span>🔊 Volume:</span>
+                    <input type="range" class="volume-range" min="0" max="1" step="0.1" value="1" oninput="changeDashVolume(this.value)">
+                </div>
+            </div>
+
+            <div class="sub-feature-card">
+                <h3>💖 Love Compatibility Test</h3>
+                <p style="font-size: 0.8rem; color: #bbb; margin-bottom: 10px;">Masukkan nama kalian berdua untuk tes energi kecocokan:</p>
+                <div class="love-calc-inputs">
+                    <input type="text" id="calcName1" placeholder="Nama Kamu" value="Bastian">
+                    <input type="text" id="calcName2" placeholder="Nama Kamu" value="Selvia Alyana Putri">
+
+                </div>
+                <button class="calc-action-btn" onclick="calculateLoveCompatibility()">Hitung Kecocokan ✨</button>
+                <p id="loveCalcResult"></p>
+            </div>
+
+            <div class="sub-feature-card">
+                <h3>📅 Tantangan Seru Hari Ini</h3>
+                <p style="font-size: 0.8rem; color: #bbb; margin-bottom: 5px;">Misi aktivitas acak yang wajib kalian lakukan hari ini:</p>
+                <button class="mission-btn" onclick="generateDailyMission()">🎲 Ambil Misi Acak</button>
+                <p id="coupleMissionText">Klik tombol untuk mengambil misi seru hari ini... 💜</p>
+            </div>
+        </div>
+
+        <div class="section-card" style="border: 2px solid rgba(192, 132, 255, 0.4);">
+            <h2 style="color: #ffd6ff; font-size: 1.5rem;"><span style="filter: drop-shadow(0 0 8px #ffd6ff);">✉️ Read Me When...</span></h2>
+            <p style="color: #ccc; font-size: 0.85rem; margin-bottom: 20px; font-style: italic;">
+                "Buka amplop ini saat kamu lagi ngerasain hal-hal di bawah ya..."
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px;">
+                <button class="mission-btn" style="padding: 12px; border-radius: 12px; font-size: 0.85rem; margin-top: 0;" onclick="openLoveLetter('angry')">😡 Kamu Lagi Kesal</button>
+                <button class="mission-btn" style="padding: 12px; border-radius: 12px; font-size: 0.85rem; margin-top: 0;" onclick="openLoveLetter('sad')">😢 Kamu Lagi Capek</button>
+                <button class="mission-btn" style="padding: 12px; border-radius: 12px; font-size: 0.85rem; margin-top: 0;" onclick="openLoveLetter('miss')">🥺 Kamu Lagi Kangen</button>
+                <button class="mission-btn" style="padding: 12px; border-radius: 12px; font-size: 0.85rem; margin-top: 0;" onclick="openLoveLetter('happy')">🥰 Kamu Lagi Happy</button>
+            </div>
+
+            <div id="letterDisplayArea" style="display: none; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(192, 132, 255, 0.4); padding: 20px; border-radius: 15px; text-align: left; animation: fadeUp 0.5s ease;">
+                <span id="letterTitle" style="display: block; font-weight: bold; color: #ffd6ff; font-size: 1.1rem; margin-bottom: 10px; border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 5px;"></span>
+                <p id="letterContent" style="font-size: 0.95rem; line-height: 1.7; color: #e7dfff; font-style: italic; white-space: pre-line;"></p>
+                <button class="mission-btn" style="margin-top: 15px; width: 100%; border-color: rgba(255,255,255,0.3);" onclick="closeLoveLetter()">Tutup Surat 🔒</button>
+            </div>
+        </div>
+
         <div class="section-card">
             <h2>Always & Forever 🌹</h2>
-            <p>Made with love, just for you.</p>
+            <p>Dibuat dengan cinta Hanya untuk kamu.</p>
         </div>
 
     </div>
 
-   <div class="music-player" id="shape-of-my-hearts">
-    🎵 Shape Of My Heart
-</div>
-    <div class="visualizer">
+    <div class="music-player" id="shape-of-my-hearts">
+        🎵 Shape Of My Heart
+    </div>
+
+    <div class="visualizer" id="visualizerContainer">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
@@ -826,14 +1063,24 @@
 
         setInterval(updateLoveCounter, 1000);
 
-        // === FITUR SENSOR SCROLL (TIMELINE REVEAL) ===
+        // === FITUR SENSOR SCROLL (TIMELINE REVEAL & PROGRESS BAR FILL) ===
         function revealTimelineItems() {
             const items = document.querySelectorAll('.timeline-item');
             const triggerBottom = window.innerHeight * 0.85;
+            
+            const timelineSection = document.querySelector('.timeline-section');
+            const progressFill = document.getElementById('timelineProgress');
+            
+            if(timelineSection && progressFill) {
+                const rect = timelineSection.getBoundingClientRect();
+                const totalHeight = rect.height;
+                const scrolledIntoSection = Math.max(0, Math.min(totalHeight, (window.innerHeight * 0.5) - rect.top));
+                const pct = (scrolledIntoSection / totalHeight) * 100;
+                progressFill.style.height = pct + '%';
+            }
 
             items.forEach(item => {
                 const itemTop = item.getBoundingClientRect().top;
-
                 if (itemTop < triggerBottom) {
                     item.classList.add('active-lane');
                 } else {
@@ -844,11 +1091,10 @@
 
         window.addEventListener('scroll', revealTimelineItems);
 
-        // === FITUR 2: PARALLAX STARFIELD & GRAVITY EFFECT SENSOR ===
-        // Merespons gerakan mouse (desktop) atau kemiringan HP
+        // === FITUR PARALLAX STARFIELD & GRAVITY EFFECT SENSOR ===
         const auroraBg = document.getElementById('auroraBg');
-        const starsContainer = document.getElementById('stars');
-        const intensity = 30; // Seberapa jauh elemen bergerak
+        const starsContainerInit = document.getElementById('stars');
+        const intensity = 30; 
 
         function handleParallax(e) {
             let x, y;
@@ -856,86 +1102,228 @@
                 x = e.clientX / window.innerWidth;
                 y = e.clientY / window.innerHeight;
             } else if (e.type === 'deviceorientation') {
-                // Gunakan sensor gyroscope HP (membutuhkan izin di iOS)
-                // Normalize beta (-180 to 180) and gamma (-90 to 90)
                 x = (e.gamma + 90) / 180;
                 y = (e.beta + 180) / 360;
-                
-                // Jika gerakan terlalu ekstrem, batasnya
                 if (x > 1) x = 1; if (x < 0) x = 0;
                 if (y > 1) y = 1; if (y < 0) y = 0;
             } else {
                 return;
             }
 
-            // Hitung pergeseran (invert agar gerakan lebih sinematik)
             const moveX = (0.5 - x) * intensity;
             const moveY = (0.5 - y) * intensity;
 
-            // Terapkan transform ke background
-            auroraBg.style.transform = `translate(${moveX * 0.5}px, ${moveY * 0.5}px)`;
+            if (auroraBg) auroraBg.style.transform = `translate(${moveX * 0.5}px, ${moveY * 0.5}px)`;
+            if (starsContainerInit) starsContainerInit.style.transform = `translate(${moveX}px, ${moveY}px)`;
             
-            // Bintang bergeser sedikit lebih cepat (layer depth)
-            starsContainer.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            
-            // Fireflies juga bergeser
             const fireflies = document.querySelectorAll('.firefly');
             fireflies.forEach(fly => {
-                const flyX = (parseFloat(fly.style.left) / 100);
-                const flyY = (parseFloat(fly.style.bottom) / 100);
-                const moveFlyX = (0.5 - x) * intensity * 1.5; // Layer depth 
-                const moveFlyY = (0.5 - y) * intensity * 1.5; // Layer depth
+                const moveFlyX = (0.5 - x) * intensity * 1.5; 
+                const moveFlyY = (0.5 - y) * intensity * 1.5; 
                 fly.style.transform = `translate(${moveFlyX}px, ${moveFlyY}px)`;
             });
         }
 
-        // Jalankanparallax dengan mulus
         document.addEventListener('mousemove', handleParallax);
         window.addEventListener('deviceorientation', handleParallax, true);
 
-
-        // === FITUR 3: DYNAMIC FLOATING POP-UP QUOTES ===
+        // === FITUR DYNAMIC FLOATING POP-UP QUOTES ===
         const quotes = [
             "Kamu tahu? Aku senyum-senyum sendiri pas nulis ini WLEE...",
             "Makasih ya udah bertahan sama aku bebepssss. 💜",
             "Hidup ku bener bener berubah saat ketemu kamu",
-            "Makasih udah hadir di hidup aku'",
-            ];
+            "Makasih udah hadir di hidup aku'"
+        ];
         const quoteBubble = document.getElementById('quoteBubble');
         const quoteText = document.getElementById('quoteText');
         let currentQuoteIndex = 0;
         let quoteInterval;
 
         function showNextQuote() {
-            if (quotes.length === 0) return;
-
-            // Ubah teks perlahan
-            quoteBubble.classList.remove('show-quote'); // Sembunyikan dulu
+            if (!quotes.length || !quoteBubble || !quoteText) return;
+            quoteBubble.classList.remove('show-quote'); 
             
             setTimeout(() => {
                 quoteText.innerText = quotes[currentQuoteIndex];
-                quoteBubble.classList.add('show-quote'); // Tampilkan teks baru
-                
-                // Siapkan index berikutnya
+                quoteBubble.classList.add('show-quote'); 
                 currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
-            }, 500); // Waktu yang sama dengan durasi transisi
+            }, 500); 
         }
 
+        // === FUNGSIONAL FITUR: RANDOM MESSAGE GENERATOR ===
+        const randomMessages = [
+            "Jangan lupa senyum hari ini yaa, senyuman kamu itu berharga banget! 😊💜",
+            "Setiap denger lagu ini, yang terlintas di pikiranku cuma kamu seorang. ✨",
+            "Kalo kamu lagi ngerasa capek sama dunia, inget ya ada aku yang selalu dukung kamu di sini. Hugs! 🤗🌸",
+            "Makasih yaa udah selalu sabar menghadapi sifat canggung aku pas awal ketemu. You are the best! 🌹",
+            "I love every single side of you. Jangan pernah bosan sama aku yaa anjayzzz! 🥰💖"
+        ];
+        
+        function generateRandomLoveMessage() {
+            const msgParagraph = document.getElementById('dynamicLoveMessage');
+            if(msgParagraph) {
+                msgParagraph.style.opacity = '0';
+                setTimeout(() => {
+                    const randomIndex = Math.floor(Math.random() * randomMessages.length);
+                    msgParagraph.innerText = randomMessages[randomIndex];
+                    msgParagraph.style.opacity = '1';
+                }, 200);
+            }
+        }
 
-        // === JALUR MEMBUKA KADO (GIFT OPEN) ===
+        // ==================== LOGIKA JS UNTUK 3 FITUR BARU BARU ====================
+        
+        // 1. Logika Kontrol Musik Intern Dash
+        function toggleDashMusic() {
+            const song = document.getElementById('shape-of-my-heart');
+            const btn = document.getElementById('dashPlayBtn');
+            if(song.paused) {
+                song.play();
+                btn.innerText = "⏸️";
+            } else {
+                song.pause();
+                btn.innerText = "▶️";
+            }
+        }
+        
+        function changeDashVolume(val) {
+            const song = document.getElementById('shape-of-my-heart');
+            song.volume = val;
+        }
+
+        function seekDashMusic(e) {
+            const song = document.getElementById('shape-of-my-heart');
+            const trackBar = document.getElementById('dashTrackBar');
+            if(!song.duration) return;
+            const rect = trackBar.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const width = rect.width;
+            const pct = clickX / width;
+            song.currentTime = pct * song.duration;
+        }
+
+        function updateDashTrackProgress() {
+            const song = document.getElementById('shape-of-my-heart');
+            const fill = document.getElementById('dashTrackFill');
+            const lbl = document.getElementById('dashTimeLbl');
+            if(song && song.duration && fill && lbl) {
+                const pct = (song.currentTime / song.duration) * 100;
+                fill.style.width = pct + '%';
+                
+                // Format Menit Detik
+                const mins = Math.floor(song.currentTime / 60);
+                const secs = Math.floor(song.currentTime % 60);
+                lbl.innerText = mins + ":" + (secs < 10 ? "0" + secs : secs);
+            }
+        }
+
+        // 2. Logika Kalkulator Kompatibilitas Cinta (Love Test)
+        function calculateLoveCompatibility() {
+            const n1 = document.getElementById('calcName1').value.trim();
+            const n2 = document.getElementById('calcName2').value.trim();
+            const res = document.getElementById('loveCalcResult');
+            
+            if(!n1 || !n2) {
+                res.innerText = "Isi kedua nama dulu yaa! ❤️";
+                return;
+            }
+            
+            res.innerText = "⚡ Menganalisis Energi Cinta...";
+            setTimeout(() => {
+                // Di-lock acak manis berkisar antara 95% - 100% biar romantis
+                const score = Math.floor(Math.random() * 6) + 95; 
+                let feedback = "Kalian berdua klop banget! Takdir semesta mendukung penuh! 💜";
+                if(score === 100) feedback = "Kecocokan Sempurna! True love yang tiada tanding! 👑✨";
+                
+                res.innerHTML = `Hasil: <span style="font-size: 1.3rem; color: #ffd6ff;">${score}%</span><br><span style="font-size: 0.85rem; font-weight: normal; color: #ccc;">${feedback}</span>`;
+            }, 1000);
+        }
+
+        // 3. Logika Couple Mission Daily Generator
+        const missions = [
+            "Kirim pesan suara (Voice Note) bilang 'I Love You' sekarang juga! 🎙️💜",
+            "Makan bakso/makanan favorit berdua sambil saling tatap mata 5 detik! 👀🍲",
+            "Kirim pap foto muka jelek/konyol kalian masing-masing sekarang! 🤪📸",
+            "Saling kirim lagu yang mewakili isi hati kalian saat ini. 🎵❤️",
+            "Rencanakan agenda jalan-jalan kulineran seru berikutnya berdua! 🗺️✨"
+        ];
+        function generateDailyMission() {
+            const text = document.getElementById('coupleMissionText');
+            if(text) {
+                text.style.opacity = '0';
+                setTimeout(() => {
+                    const idx = Math.floor(Math.random() * missions.length);
+                    text.innerText = missions[idx];
+                    text.style.opacity = '1';
+                }, 200);
+            }
+        }
+        // ===========================================================================
+
+
+        // === AUDIO REAL ANALYZER WIDGET VISUALIZER ===
+        let audioCtx, analyser, dataArray, bufferLength;
+        function initRealVisualizer() {
+            const song = document.getElementById('shape-of-my-heart');
+            const bars = document.querySelectorAll('.bar');
+            
+            // Pasang event loop tracker untuk progress bar internal box
+            setInterval(updateDashTrackProgress, 500);
+            
+            try {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const source = audioCtx.createMediaElementSource(song);
+                analyser = audioCtx.createAnalyser();
+                source.connect(analyser);
+                analyser.connect(audioCtx.destination);
+                analyser.fftSize = 32;
+                bufferLength = analyser.frequencyBinCount;
+                dataArray = new Uint8Array(bufferLength);
+                
+                function draw() {
+                    requestAnimationFrame(draw);
+                    if(!song.paused) {
+                        analyser.getByteFrequencyData(dataArray);
+                        bars.forEach((bar, index) => {
+                            let value = dataArray[index] || 0;
+                            let heightVal = Math.max(10, (value / 255) * 45);
+                            bar.style.height = heightVal + 'px';
+                        });
+                    } else {
+                        bars.forEach(bar => { bar.style.height = '10px'; });
+                    }
+                }
+                draw();
+            } catch(e) {
+                console.log("Audio Analyzer Fallback Active.");
+                setInterval(() => {
+                    if(!song.paused) {
+                        bars.forEach(bar => {
+                            bar.style.height = (Math.random() * 35 + 10) + 'px';
+                        });
+                    }
+                }, 100);
+            }
+        }
+
+        // === JALUR MEMBUKA KADO (GIFT OPEN - FIXED PLAYER WIDGET) ===
         function openGift(){
-          const song = document.getElementById('shape-of-my-heart');            song.load();
+            const song = document.getElementById('shape-of-my-heart');            
+            song.load();
             song.volume = 1;
             song.currentTime = 0;
 
             song.play()
             .then(()=>{ 
                 console.log("Musik berhasil diputar"); 
+                initRealVisualizer();
             })
             .catch((e)=>{ 
-                console.log("Error audio (biasanya butuh interaksi user dulu):", e); 
-                // Coba putar lagi setelah interaksi
-                document.body.addEventListener('click', () => { song.play(); }, { once: true });
+                console.log("Error audio:", e); 
+                document.body.addEventListener('click', () => { 
+                    song.play(); 
+                    if(!audioCtx) initRealVisualizer();
+                }, { once: true });
             });
 
             const gift = document.getElementById('giftScreen');
@@ -945,18 +1333,21 @@
                 gift.style.display='none';
                 const main = document.getElementById('mainScreen');
                 main.classList.add('show-content');
-                document.getElementById('playerWidget').style.display='flex';
+                
+                const widgetMusic = document.getElementById('shape-of-my-hearts');
+                if(widgetMusic) widgetMusic.style.display = 'flex';
                 
                 updateLoveCounter();
                 revealTimelineItems();
 
-                // === MULAI FITUR 3: FLOATING QUOTES SESUDAH GIFT BUKA ===
-                quoteBubble.style.display = 'block'; // Pastikan element terlihat sebelum animasi
-                showNextQuote(); // Tampilkan kutipan pertama
-                quoteInterval = setInterval(showNextQuote, 10000); // Ganti kutipan setiap 10 detik
+                if(quoteBubble) {
+                    quoteBubble.style.display = 'block'; 
+                    showNextQuote(); 
+                    quoteInterval = setInterval(showNextQuote, 10000); 
+                }
 
-                setInterval(createPetal,300);
-            },1000);
+                setInterval(createPetal, 300);
+            }, 1000);
         }
 
         // === MEMBUAT KELOPAK/HATI JATUH ===
@@ -972,31 +1363,59 @@
             petal.style.opacity = Math.random();
             document.body.appendChild(petal);
 
-            setTimeout(()=>{ petal.remove(); },duration*1000);
+            setTimeout(()=>{ petal.remove(); }, duration*1000);
         }
 
-        // === MEMBUAT BACKGROUND BINTANG AUTOMATIS ===
-        for(let i=0;i<120;i++){
-            const star = document.createElement('div');
-            star.classList.add('star');
-            star.style.left = Math.random()*100+'vw';
-            star.style.top = Math.random()*100+'vh';
-            star.style.animationDuration = (Math.random()*3+2)+'s';
-            document.getElementById('stars').appendChild(star);
+        // === EFEK KURSOR KETIKA LAYAR DIKLIK (EXPLODE HEART) ===
+        document.addEventListener('click', (e) => {
+            if(document.getElementById('giftScreen').style.display !== 'none' && e.target.innerHTML === '🎁') return;
+            if(e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return; // Bypass pada tombol kontrol agar ketukan lancar
+            
+            const icons = ['💜', '💖', '✨', '🌸'];
+            for(let i=0; i<6; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('click-heart');
+                heart.innerText = icons[Math.floor(Math.random() * icons.length)];
+                heart.style.left = e.clientX + 'px';
+                heart.style.top = e.clientY + 'px';
+                
+                const mx = (Math.random() - 0.5) * 160 + 'px';
+                const my = (Math.random() - 0.5) * 160 + 'px';
+                heart.style.setProperty('--mx', mx);
+                heart.style.setProperty('--my', my);
+                
+                document.body.appendChild(heart);
+                setTimeout(() => { heart.remove(); }, 800);
+            }
+        });
+
+        // === MEMBUAT BACKGROUND BINTANG OTOMATIS ===
+        if (starsContainerInit) {
+            for(let i = 0; i < 80; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 80 + 'vh';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                star.style.animationDelay = (Math.random() * 2) + 's';
+                starsContainerInit.appendChild(star);
+            }
         }
 
         // === EFEK KUNANG-KUNANG MENGAMBANG ===
-        setInterval(()=>{
+        setInterval(() => {
             const firefly = document.createElement('div');
             firefly.classList.add('firefly');
-            firefly.style.left = Math.random()*100+'vw';
+            firefly.style.left = Math.random() * 100 + 'vw';
             firefly.style.bottom = '-10px';
-            firefly.style.animationDuration = (Math.random()*5+4)+'s';
-            firefly.style.opacity = Math.random();
+            
+            const duration = Math.random() * 4 + 5;
+            firefly.style.animationDuration = duration + 's';
+            firefly.style.opacity = Math.random() * 0.6 + 0.4;
             document.body.appendChild(firefly);
 
-            setTimeout(()=>{ firefly.remove(); },9000);
-        },700);
+            setTimeout(() => { firefly.remove(); }, duration * 1000);
+        }, 800);
 
         // === BINTANG JATUH SINEMATIK ===
         setInterval(()=>{
@@ -1006,8 +1425,8 @@
             shooting.style.left = '-200px';
             document.body.appendChild(shooting);
 
-            setTimeout(()=>{ shooting.remove(); },2000);
-        },6000);
+            setTimeout(()=>{ shooting.remove(); }, 2000);
+        }, 6000);
 
         // === EFEK SPARKLE JEJAK POINTER MOUSE ===
         document.addEventListener('mousemove',(e)=>{
@@ -1030,97 +1449,50 @@
                 { transform:'scale(0)', opacity:0 }
             ],{ duration:600 });
 
-            setTimeout(()=>{ sparkle.remove(); },600);
+            setTimeout(()=>{ sparkle.remove(); }, 600);
         });
 
-// ===== BINTANG JATUH SINEMATIK =====
-setInterval(()=>{
-    const shooting = document.createElement('div');
-    shooting.classList.add('shooting-star');
-    shooting.style.top = Math.random()*40+'vh';
-    shooting.style.left = '-200px';
-    document.body.appendChild(shooting);
+        // ===== WEATHER MEMORY =====
+        function setWeatherTheme(){
+            const hour = new Date().getHours();
+            document.body.classList.remove("morning", "afternoon", "night");
 
-    setTimeout(()=>{
-        shooting.remove();
-    },2000);
-},6000);
+            if(hour >= 6 && hour < 12){
+                document.body.classList.add("morning");
+            }else if(hour >= 12 && hour < 18){
+                document.body.classList.add("afternoon");
+            }else{
+                document.body.classList.add("night");
+            }
+        }
+        setWeatherTheme();
 
-// ===== WEATHER MEMORY =====
+        // ===== ANNIVERSARY EVENT =====
+        function createConfetti(){
+            const confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            const icons = ["🎉","🎊","✨","💜","🎂"];
+            confetti.innerText = icons[Math.floor(Math.random()*icons.length)];
+            confetti.style.left = Math.random()*100 + "vw";
+            confetti.style.fontSize = (Math.random()*20+15) + "px";
+            confetti.style.animationDuration = (Math.random()*3+2) + "s";
+            document.body.appendChild(confetti);
 
-function setWeatherTheme(){
+            setTimeout(()=>{ confetti.remove(); }, 5000);
+        }
 
-    const hour = new Date().getHours();
+        function checkSpecialDay(){
+            const today = new Date();
+            const day = today.getDate();
+            const month = today.getMonth()+1;
 
-    document.body.classList.remove(
-        "morning",
-        "afternoon",
-        "night"
-    );
+            if(day === 26 && month === 11){
+                setInterval(createConfetti, 150);
+                alert("💜 Happy Anniversary Sayang 💜");
+            }
+        }
+        checkSpecialDay();
 
-    if(hour >= 6 && hour < 12){
-
-        document.body.classList.add("morning");
-
-    }else if(hour >= 12 && hour < 18){
-
-        document.body.classList.add("afternoon");
-
-    }else{
-
-        document.body.classList.add("night");
-
-    }
-}
-
-setWeatherTheme();
-
-
-// ===== ANNIVERSARY EVENT =====
-
-function createConfetti(){
-
-    const confetti = document.createElement("div");
-
-    confetti.classList.add("confetti");
-
-    const icons = ["🎉","🎊","✨","💜","🎂"];
-
-    confetti.innerText =
-    icons[Math.floor(Math.random()*icons.length)];
-
-    confetti.style.left =
-    Math.random()*100 + "vw";
-
-    confetti.style.fontSize =
-    (Math.random()*20+15) + "px";
-
-    confetti.style.animationDuration =
-    (Math.random()*3+2) + "s";
-
-    document.body.appendChild(confetti);
-
-    setTimeout(()=>{
-        confetti.remove();
-    },5000);
-}
-
-function checkSpecialDay(){
-
-    const today = new Date();
-
-    const day = today.getDate();
-    const month = today.getMonth()+1;
-
-    if(day === 26 && month === 11){
-
-        setInterval(createConfetti,150);
-
-        alert("💜 Happy Anniversary Sayang 💜");
-    }
-}
-
-checkSpecialDay();
         // === PROTEKSI KLIK KANAN & INSPECT ELEMENT ===
         document.addEventListener('contextmenu',function(e){ e.preventDefault(); });
         document.addEventListener('keydown',function(e){
@@ -1133,6 +1505,51 @@ checkSpecialDay();
                 e.preventDefault();
             }
         });
+
+        // === LOGIKA FITUR BARU: VIRTUAL LOVE LETTERS ===
+        const loveLetters = {
+            angry: {
+                title: "❤️ Untuk Kamu yang Lagi Kesal...",
+                content: "Hai sayang... Kalau kamu lagi kesel, entah karena dunia lagi gak adil atau mungkin karena sifat aku yang kadang kekanak-kanakan, aku mau minta maaf ya. \n\nBoleh banget marah kok, tapi jangan dipendem sendiri. Kalau udah tenang, kabarin aku ya? Aku siap dengerin unek-unek kamu tanpa nge-judge sedikit pun. Tarik napas dalam-dalam... I love you, jangan lama-lama ya cemberutnya 💜."
+            },
+            sad: {
+                title: "🥺 Untuk Kamu yang Lagi Capek...",
+                content: "Hey, it's okay to not be okay. Hari ini berat banget ya? Makasih ya udah bertahan sampai detik ini. Kamu udah berusaha luar biasa kok.\n\nInget, kamu gak sendirian menghadapi semuanya. Kalau kamu butuh pundak buat bersandar atau sekadar temen makan bakso tanpa perlu cerita apa-apa, aku ada di sini. Istirahat yang cukup ya sayang, semesta tau kamu hebat. 🌸"
+            },
+            miss: {
+                title: "💜 Untuk Kamu yang Lagi Kangen Aku...",
+                content: "Ciyee ada yang lagi kangen yaaa? Hahaha melet WLEE 🤪!\n\nSama kok, aku juga selalu kangen sama semua hal tentang kamu. Cara kamu ngomong, spam chat kamu, sampai kehadiran kamu yang selalu bikin tenang. Kalau kangennya udah gak tertahankan, coba cek galeri foto Blok M di atas, atau langsung chat/telpon aku aja sekarang! Aku selalu nungguin kamu tahu. ✨"
+            },
+            happy: {
+                title: "🥰 Untuk Kamu yang Lagi Happy...",
+                content: "Yeay! Aku ikut seneng denger kabarnya! Kebahagiaan kamu itu bener-bener nular ke aku tahu.\n\nSimpan energi positif ini baik-baik yaa. Semoga hari-hari berikutnya bakal terus bawa senyuman manis di muka kamu. Sini bagi cerita bahagianya ke aku, aku pengen denger semua detailnya! Stay happy sayangku 👑✨."
+            }
+        };
+
+        function openLoveLetter(type) {
+            const displayArea = document.getElementById('letterDisplayArea');
+            const titleSpan = document.getElementById('letterTitle');
+            const contentP = document.getElementById('letterContent');
+            
+            if(displayArea && titleSpan && contentP && loveLetters[type]) {
+                titleSpan.innerText = loveLetters[type].title;
+                contentP.innerText = loveLetters[type].content;
+                
+                displayArea.style.display = 'block';
+                displayArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        function closeLoveLetter() {
+            const displayArea = document.getElementById('letterDisplayArea');
+            if(displayArea) {
+                displayArea.style.opacity = '0';
+                setTimeout(() => {
+                    displayArea.style.display = 'none';
+                    displayArea.style.opacity = '1';
+                }, 300);
+            }
+        }
     </script>
 </body>
 </html>
