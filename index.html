@@ -58,13 +58,19 @@
     transform:scale(1.05);
 }
 
-@keyframes scrollSlider{
-    from{
-        transform:translateX(0);
-    }
-    to{
-        transform:translateX(-50%);
-    }
+/* 1. Animasi yang mulus */
+@keyframes scrollSlider {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* 2. Pengaturan Arah */
+.gallery-section:nth-of-type(1) .slide-track {
+    animation-direction: normal; /* Slider Blok M ke kiri */
+}
+
+.gallery-section:nth-of-type(2) .slide-track {
+    animation-direction: reverse; /* Slider Valentine ke kanan */
 }
         *{
             margin:0;
@@ -906,31 +912,42 @@
        <h2 style="color: #ffd6ff; margin: 50px 0 10px 0; font-size: 2rem; text-shadow: 0 0 15px rgba(192,132,255,.4);">Foto Foto kita 📸</h2>
         <p style="color: #ccc; font-style: italic; margin-bottom: 30px;">" memori indah kita berdua anjayszz ..."</p>
 
-        <div class="gallery-section">
-            <h2 class="gallery-title">Kegiatan kita di BLOk M 💜</h2>
-            <div class="slider">
-                <div class="slide-track">
-                    <div class="slide"><img src="Screenshot 2026-05-31 183651.png"></div>
-                    <div class="slide"><img src="Screenshot 2026-05-31 183635.png"></div>
-                    <div class="slide"><img src="Screenshot 2026-05-31 183458.png"></div>
-                    <div class="slide"><img src="Screenshot 2026-05-31 183626.png"></div>
-                    <div class="slide"><img src="Screenshot 2026-05-31 183618.png"></div>
-                </div>
-            </div>
+<div class="gallery-section">
+    <h2 class="gallery-title">Kegiatan kita di BLOk M 💜</h2>
+    <div class="slider">
+        <div class="slide-track">
+            <div class="slide"><img src="Screenshot 2026-05-31 183651.png"></div>
+            <div class="slide"><img src="Screenshot 2026-05-31 183635.png"></div>
+            <div class="slide"><img src="Screenshot 2026-05-31 183458.png"></div>
+            <div class="slide"><img src="Screenshot 2026-05-31 183626.png"></div>
+            <div class="slide"><img src="Screenshot 2026-05-31 183618.png"></div>
+            <div class="slide"><img src="Screenshot 2026-05-31 183651.png"></div>
+            <div class="slide"><img src="Screenshot 2026-05-31 183635.png"></div>
+            <div class="slide"><img src="Screenshot 2026-05-31 183458.png"></div>
+            <div class="slide"><img src="Screenshot 2026-05-31 183626.png"></div>
+            <div class="slide"><img src="Screenshot 2026-05-31 183618.png"></div>
         </div>
+    </div>
+</div>
 
-        <div class="gallery-section">
-            <h2 class="gallery-title">Spesial Hari Valentine 🌹</h2>
-            <div class="slider">
-                <div class="slide-track">
-                    <div class="slide"><img src="Screenshot 2026-06-07 233955.png"></div>
-                    <div class="slide"><img src="Screenshot 2026-06-07 234005.png"></div>
-                    <div class="slide"><img src="Screenshot 2026-06-07 234023.png"></div>
-                    <div class="slide"><img src="Screenshot 2026-06-07 234031.png"></div>
-                    <div class="slide"><img src="Screenshot 2026-06-07 234040.png"></div>
-                </div>
-            </div>
-        </div>        <div class="section-card">
+<div class="gallery-section">
+    <h2 class="gallery-title">Spesial Hari Valentine 🌹</h2>
+    <div class="slider">
+        <div class="slide-track">
+            <div class="slide"><img src="Screenshot 2026-06-07 233955.png"></div>
+            <div class="slide"><img src="Screenshot 2026-06-07 234005.png"></div>
+            <div class="slide"><img src="Screenshot 2026-06-07 234023.png"></div>
+            <div class="slide"><img src="Screenshot 2026-06-07 234031.png"></div>
+            <div class="slide"><img src="Screenshot 2026-06-07 234040.png"></div>
+            <div class="slide"><img src="Screenshot 2026-06-07 233955.png"></div>
+            <div class="slide"><img src="Screenshot 2026-06-07 234005.png"></div>
+            <div class="slide"><img src="Screenshot 2026-06-07 234023.png"></div>
+            <div class="slide"><img src="Screenshot 2026-06-07 234031.png"></div>
+            <div class="slide"><img src="Screenshot 2026-06-07 234040.png"></div>
+        </div>
+    </div>
+</div>
+       <div class="section-card">
             <h2>Ini vidio kita lagi makan  </h2>
             <p style="margin-bottom:15px;">
                 Enak banget tapi kalo dimakan banyak banyak enegg juga ya 
